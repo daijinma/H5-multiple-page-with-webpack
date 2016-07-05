@@ -1,0 +1,22 @@
+{
+  "name": "h5barrage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daijinma/H5Barrage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daijinma/H5Barrage/issues"
+  },
+  "homepage": "https://github.com/daijinma/H5Barrage#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
