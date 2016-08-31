@@ -1,0 +1,8 @@
+
+.split {
+    margin-top: 0.7rem;
+    height: .3rem;
+    background: linear-gradient(top,#dadada,#ededed 99%);
+    background: -moz-linear-gradient(top,#dadada,#ededed 99%);
+    background: -webkit-linear-gradient(top,#dadada,#ededed 99%);
+}

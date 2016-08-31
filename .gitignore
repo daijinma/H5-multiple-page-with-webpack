@@ -1,0 +1,9 @@
+node_modules/*
+!node_modules/gulp-css-base64
+
+/_server
+/build
+.idea
+/.idea
+idea/*
+
