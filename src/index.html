@@ -17,10 +17,12 @@
 
 </head>
 <body>
-	zhihuDaily
-
-<!-- jquery -->
-<script src="https://s.ssl.pdim.gs/static/027d06e913cf962c.js"></script>
-
+	<div id="app">
+		<a v-link="{ path: '/index' }">Go to index</a>
+    	<a v-link="{ path: '/detail' }">Go to detail</a>
+        <router-view></router-view>
+    </div>
+	<!-- jquery -->
+	<script src="https://s.ssl.pdim.gs/static/027d06e913cf962c.js"></script>
 </body>
 </html>
