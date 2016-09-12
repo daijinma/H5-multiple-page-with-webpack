@@ -1,8 +1,7 @@
 # webpack 构建知乎日报
 
-[API文档](https://github.com/iKrelve/KuaiHu/blob/master/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5API.md)
-这里我们可以先用第三方的，后期有足够的精力可以自己开个服务器定时爬
-[vue-router文档](http://router.vuejs.org/zh-cn/index.html)
+1.[API文档](https://github.com/iKrelve/KuaiHu/blob/master/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5API.md)这里我们可以先用第三方的，后期有足够的精力可以自己开个服务器定时爬
+2.[vue-router文档](http://router.vuejs.org/zh-cn/index.html)
 
 TODO         |  status
 ------------ | -------------
