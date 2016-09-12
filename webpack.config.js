@@ -10,73 +10,50 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD = path.resolve(ROOT_PATH, 'build');
 
-//获取多页面的每个入口文件，用于配置中的entry
-var myEntry = (function getEntry() {
-    var jsPath = path.resolve(srcDir, 'js');
-    var dirs = fs.readdirSync(jsPath);
-    var matchs = [], files = {};
-    dirs.forEach(function (item) {
-        matchs = item.match(/(.+)\.js$/);
-        //console.log(matchs);
-        if (matchs) {
-            files[matchs[1]] = path.resolve(srcDir, 'js', item);
+var myPlugins = [
+    //提公用js到common.js文件中
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'common', // 将公共模块提取，生成名为`common`的chunk
+        filename: "./js/common.js",
+        minChunks: 2 // 提取所有entry共同依赖的模块
+    }),
+    //将样式统一发布到style.css中
+    new ExtractTextPlugin("./asssets/style/[name].css", {
+        allChunks: true,
+        disable: false
+    }),
+    //报错 && 不中断
+    new webpack.NoErrorsPlugin(),
+    // new webpack.ProvidePlugin({
+    //     "reset": path.resolve(
+    //         __dirname,
+    //         "src/asssets/style/reset.css"
+    //     )
+    // })
+    new HtmlWebpackPlugin({
+        filename: "./index.html", //生成的html存放路径，相对于path
+        //favicon: './src/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
+        template: './src/index.html', //html模板路径
+        // templateContent: function(templateParams, compilation) {
+        //   // Return your template content synchronously here 
+        //   return require('./src/view/'+i+'.html!html');
+        // },
+        inject: 'body', //js插入的位置，true/'head'/'body'/false
+        excludeChunks: ['dev-helper'],//不使用dev-helper作为注入文件
+        //hash: true, //为静态资源生成hash值
+        //chunks: ['common',i],//需要引入的chunk，不配置就会引入所有页面的资源
+        minify: { //压缩HTML文件    
+            removeComments: true, //移除HTML中的注释
+            collapseWhitespace: false //删除空白符与换行符
         }
-    });
-    return files;
-})();
-
-
-var myPlugins = (function(){
-    var plugins = [
-        //提公用js到common.js文件中
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common', // 将公共模块提取，生成名为`common`的chunk
-            filename: "./js/common.js",
-            minChunks: 2 // 提取所有entry共同依赖的模块
-        }),
-        //将样式统一发布到style.css中
-        new ExtractTextPlugin("./asssets/style/[name].css", {
-            allChunks: true,
-            disable: false
-        }),
-        //报错 && 不中断
-        new webpack.NoErrorsPlugin(),
-        // new webpack.ProvidePlugin({
-        //     "reset": path.resolve(
-        //         __dirname,
-        //         "src/asssets/style/reset.css"
-        //     )
-        // })
-    ];
-
-    for(var i in myEntry){
-        var thisPlugs = {
-            filename: "./"+i+".html", //生成的html存放路径，相对于path
-            //favicon: './src/img/favicon.ico', //favicon路径，通过webpack引入同时可以生成hash值
-            template: './src/view/'+i+'.html', //html模板路径
-            // templateContent: function(templateParams, compilation) {
-            //   // Return your template content synchronously here 
-            //   return require('./src/view/'+i+'.html!html');
-            // },
-            inject: 'body', //js插入的位置，true/'head'/'body'/false
-            excludeChunks: ['dev-helper'],//不使用dev-helper作为注入文件
-            //hash: true, //为静态资源生成hash值
-            chunks: ['common',i],//需要引入的chunk，不配置就会引入所有页面的资源
-            minify: { //压缩HTML文件    
-                removeComments: true, //移除HTML中的注释
-                collapseWhitespace: false //删除空白符与换行符
-            }
-        };
-        plugins.push(new HtmlWebpackPlugin(thisPlugs))
-    };
-    return plugins;
-})();
+    })
+];
 
 
 module.exports = {
     cache: true,
     devtool: "source-map",
-    entry: myEntry,
+    entry: ['./src/app.js'],
     output: {
         /**
          * path          一定要绝对路径，不然报错
@@ -94,7 +71,6 @@ module.exports = {
     // },
     externals: {
         jquery: 'window.$',
-        ABP:'ABP',
     },
     module: {
         loaders:[
@@ -108,7 +84,8 @@ module.exports = {
             //     include: srcDir,
             //     loader: ExtractTextPlugin.extract("style", "css!px2rem?remUnit=75&remPrecision=8!less")
             // },
-             {
+            // css 自动补全前缀
+            {
                 test: /\.css$/,
                 include: srcDir,
                 loader: ExtractTextPlugin.extract("style", "css")

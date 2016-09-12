@@ -1,4 +1,13 @@
-# webpack 构建多页面前端项目
+# webpack 构建知乎日报
 
-JALBAA/vue-lazyload-img https://github.com/JALBAA/vue-lazyload-img/
+API (https://github.com/iKrelve/KuaiHu/blob/master/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5API.md)[https://github.com/iKrelve/KuaiHu/blob/master/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5API.md]
+
+
+TODO         |  status
+------------ | -------------
+
+webpack框架搭建 | DONE
+index(list) | ?
+detail | ?
+common components | ?
 
