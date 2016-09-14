@@ -14,11 +14,11 @@ var myPlugins = [
     //提公用js到common.js文件中
     new webpack.optimize.CommonsChunkPlugin({
         name: 'common', // 将公共模块提取，生成名为`common`的chunk
-        filename: "./js/common.js",
+        filename: "js/common.js",
         minChunks: 2 // 提取所有entry共同依赖的模块
     }),
     //将样式统一发布到style.css中
-    new ExtractTextPlugin("./asssets/style/[name].css", {
+    new ExtractTextPlugin("style/[name].css", {
         allChunks: true,
         disable: false
     }),
@@ -61,8 +61,8 @@ module.exports = {
          * filename      文件名
         **/ 
         path: BUILD,// 这里最好定义输出根目录，起服务会以此为根目录
-        publicPath: "", // 这里是指注入文件引用地址  eg. publicPath+filename
-        filename: "./js/[name].js", //这里填写输出文件的地址
+        publicPath:"/", // 这里是指注入文件引用地址  eg. publicPath+filename
+        filename: "js/[name].js", //这里填写输出文件的地址
     },
     // resolve: {
     //     alias: {

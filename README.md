@@ -1,7 +1,6 @@
 # webpack 构建知乎日报
-
-1 [API文档](https://github.com/iKrelve/KuaiHu/blob/master/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5API.md)这里我们可以先用第三方的，后期有足够的精力可以自己开个服务器定时爬<br>
-2 [vue-router文档](http://router.vuejs.org/zh-cn/index.html)
+1 [vue-router文档](http://router.vuejs.org/zh-cn/index.html)
+2 [知乎日报-API-](https://github.com/iKrelve/KuaiHu/blob/master/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5API.md)
 
 TODO         |  status
 ------------ | -------------
@@ -23,3 +22,11 @@ menu(components) | ?
 >  * autoprefixer文档前缀添加
 >  * 尝试能自动px转rem方案
 
+### 开发和构建
+>  * npm run server (or node server)开发
+>  * npm run build
+> 详情见package.json
+
+
+### 后台
+> [express](http://www.expressjs.com.cn/)

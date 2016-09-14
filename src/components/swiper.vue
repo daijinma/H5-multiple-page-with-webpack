@@ -1,35 +1,26 @@
 <template>
     <swipe class="my-swipe">
-        <swipe-item v-for="item in swipeArray">
-            <img src="../asssets/images/loading.png" v-lazyload="item.bigimg" >
+        <swipe-item v-for="item in topStories">
+            <img v-bind:src="item.image" >
         </swipe-item>
     </swipe>
 </template>
 
 <script>
     import { Swipe, SwipeItem } from 'vue-swipe';
-    import $ from 'jquery';
-    require("../asssets/style/vue-swipe.css");
-
+    import "../style/vue-swipe.css";
+    import store from '../store/latest';
 
     module.exports={
         data(){
            return {
-                swipeArray:[]
+                topStories:[]
            }
         },
         ready(){
-             $.ajax({
-                url:"http://api.m.panda.tv/ajax_rmd_ads_get",
-                data:{
-                    __plat:'h5'
-                },
-                dataType:'jsonp',
-                jsonpCallback:"jsonp1",
-                success:(res)=> {
-                    this.swipeArray = res.data;
-                }
-            })
+            this.topStories = store.state.topStories;
+            console.log(store.state.topStories)
+            console.log(this.topStories)
         },
         components:{
             'Swipe': Swipe,
