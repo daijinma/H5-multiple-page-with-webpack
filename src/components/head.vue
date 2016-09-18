@@ -1,6 +1,6 @@
 <template>
 	<div>
-		header
+		知乎日报
 	</div>
 </template>
 

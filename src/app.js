@@ -5,7 +5,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 
-window.APIHOST = 'http://10.20.5.110:3001'; // 110 的测试机
+window.APIHOST = 'http://zhihuapi.daijinma.cn'; // 110 的测试机
 window.IMG_REFERER = APIHOST+"/img?url="; // 110 的测试机
 $.ajaxSettings.beforeSend = (xhr, setting) => setting.url = setting.url.replace(/^\/\_api\/(.+)/, APIHOST + '/$1');
 
