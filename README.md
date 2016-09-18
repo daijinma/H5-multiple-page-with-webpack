@@ -30,3 +30,7 @@ menu(components) | ?
 
 ### 后台
 > [express](http://www.expressjs.com.cn/)
+
+### 参考文章
+> [vuex](https://github.com/vuejs/vuex/tree/master/docs/zh-cn)
+> [vuex store ajajx 不更新视图](http://www.cnblogs.com/rock-roll/p/5692891.html)参考 `vuex` 部分

@@ -1,7 +1,8 @@
 <template>
     <swipe class="my-swipe">
         <swipe-item v-for="item in topStories">
-            <img v-bind:src="item.image" >
+            <div class="bg-img" :style="{backgroundImage:'url('+IMG_REFERER+item.image+')'}">
+            <div class="title">{{item.title}}</div>
         </swipe-item>
     </swipe>
 </template>
@@ -14,13 +15,16 @@
     module.exports={
         data(){
            return {
-                topStories:[]
+                IMG_REFERER,
            }
         },
+        vuex : {
+            getters : {
+                topStories : (state) => state.topStories
+            }
+        },
         ready(){
-            this.topStories = store.state.topStories;
-            console.log(store.state.topStories)
-            console.log(this.topStories)
+            //this.topStories = store.state.topStories;
         },
         components:{
             'Swipe': Swipe,
@@ -31,16 +35,26 @@
 
 <style scoped>
     .my-swipe {
-      height: 9rem;
+      height: 6rem;
       color: #fff;
       font-size: 30px;
       text-align: center;
     }
 
-    img{
+    .bg-img{
         display: block;
         width: 100%;
         height: 100%;
+        background-size: cover;
+        background-position: center;
     }
-
+    .title{
+        position: absolute;
+        bottom:0;
+        left:0;
+        width: 100%;
+        text-align: left;
+        padding:0.2rem;
+        font-size: 0.5rem;
+    }
 </style>

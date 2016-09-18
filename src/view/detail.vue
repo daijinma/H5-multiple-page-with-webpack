@@ -1,12 +1,14 @@
 <template>
-	<div class='index'>
+	<div class='detail'>
 		<iheader></iheader>
+		<link rel="stylesheet" href="{{css}}">
 		{{{data.body}}}
 	</div>
 </template>
 
 <script>
 	import iheader from '../components/head.vue';
+	import utils from '../utils.js';
 	//  (?<=<.+)(http|https).+?pic[0-9].zhimg.+?\.(jpg|png|jpge|gif)(?=.+>)
 	//  这里需要匹配 知乎文章正文 的 img标签
 	//  包含三类
@@ -19,7 +21,8 @@
 		data(){
 			return {
 				id:0,
-				data:{}
+				data:{},
+				css:''
 			}
 		},
 		ready(){
@@ -28,16 +31,16 @@
                 url:"/_api/news/"+this.id,
                 method:"GET",
                 success:(res)=> {
+                	res.body = res.body.replace('<div class="img-place-holder"></div>','<div class="img-place-holder" style="background-image:url('+res.image+')"></div>')
                 	res.body = res.body.replace(IMG_REFERER_REGEXP,function(){
                 		let url = arguments[0]
                 		if(arguments[1] == 'https'){
-                			console.log(url)
                 			url = 'http'+url.substring(5,url.length);
                 		}
                 		return IMG_REFERER+url
                 	});
 
-
+                	this.css = res.css;
                     this.data = res;
                 }
             })
@@ -47,3 +50,10 @@
 		}
 	}
 </script>
+
+<style>
+	.detail .img-place-holder{
+		background-size: cover;
+	    background-position: center;
+	}
+</style>

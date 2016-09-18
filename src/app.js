@@ -45,10 +45,10 @@ router.map({
             require(['./view/detail.vue'],resolve);
         }
     },
-    /* 404路由 */
-    '*': {
+    '*':{
+        name:'404',
         component: function(resolve){
-            require(['./view/404.vue'],resolve);
+            router.go("/index");
         }
     }
 });
