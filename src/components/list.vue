@@ -7,7 +7,7 @@
                     <p class="time" v-if="item.display_date">{{item.display_date}}</p>
                 </div>
                 <div v-if="item.images" class="list-img-box">
-                    <img v-bind:src="IMG_REFERER+item.images[0]" >
+                    <img v-bind:src="item.images[0]" >
                     <p v-if="item.multipic" class="tip"><i class="iconfont">&#xe61c</i>多图</p>
                 </div>
             </li>    

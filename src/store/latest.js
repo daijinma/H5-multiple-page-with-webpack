@@ -2,14 +2,13 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
-const PRE_NAME = "DJM_VUEZHD";
 Vue.use(Vuex);
 
 
 export default new Vuex.Store({
   state : {
-    stories:get('stories',[]),
-    topStories:get('topStories',[])
+    stories:[],
+    topStories:[],
   },
   mutations:{
     SETKEYVALUE(state, key, value){
@@ -24,6 +23,4 @@ export default new Vuex.Store({
   }
 })
 
-function get(key,defaultValue){
-  JSON.parse(localStorage.getItem(PRE_NAME+key)) || defaultValue;
-}
+

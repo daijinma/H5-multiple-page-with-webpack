@@ -1,7 +1,7 @@
 <template>
     <swipe class="my-swipe">
-        <swipe-item v-for="item in topStories">
-            <div class="bg-img" :style="{backgroundImage:'url('+IMG_REFERER+item.image+')'}">
+        <swipe-item v-for="item in topStories"  v-link="{name: 'detail', params: { id: item.id }}">
+            <div class="bg-img" :style="{backgroundImage:'url('+item.image+')'}">
             <div class="title">{{item.title}}</div>
         </swipe-item>
     </swipe>
@@ -56,5 +56,6 @@
         text-align: left;
         padding:0.2rem;
         font-size: 0.5rem;
+        text-shadow: 1px 1px 5px #ccc;
     }
 </style>

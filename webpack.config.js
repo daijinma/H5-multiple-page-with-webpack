@@ -86,6 +86,10 @@ module.exports = {
             // },
             // css 自动补全前缀
             {
+              test: /\.scss$/,
+              loader: 'style!css!sass'
+            },
+            {
                 test: /\.css$/,
                 include: srcDir,
                 loader: ExtractTextPlugin.extract("style", "css")
